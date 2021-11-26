@@ -1,4 +1,4 @@
-image: idreesvend/sonarqube
+image: idreesvend/sonarqube:latest
 
 clone:
   depth: full
