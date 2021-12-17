@@ -1,4 +1,4 @@
-image: idreesvend/sonarqube:latest
+image: cirrusci/flutter:latest
 
 clone:
   depth: full
