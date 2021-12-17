@@ -17,3 +17,4 @@ pipelines:
 definitions:
   caches:
     sonar: ~/.sonar
+    flutter: /opt/sonarqube/flutter/bin
