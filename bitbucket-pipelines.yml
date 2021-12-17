@@ -9,7 +9,7 @@ pipelines:
       - step:
           name: SonarQube analysis
           script:
-            - flutter docter
+            - flutter doctor
   
 definitions:
   caches:
