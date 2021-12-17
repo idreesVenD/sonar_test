@@ -10,10 +10,7 @@ pipelines:
           name: SonarQube analysis
           script:
               - flutter doctor
-              - sonar-scanner \       
-                  -Dsonar.projectKey=test \
-                  -Dsonar.host.url=${SONAR_HOST_URL} \
-                  -Dsonar.login=${SONAR_TOKEN}
+              - sonar-scanner -Dsonar.projectKey=test -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
                   
 definitions:
   caches:
