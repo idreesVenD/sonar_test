@@ -1,4 +1,4 @@
-image: idreesvend/sonarqube-new-new:latest
+image: cirrusci/flutter:latest
 
 clone:
   depth: full
@@ -9,9 +9,11 @@ pipelines:
       - step:
           name: SonarQube analysis
           script:
-            - flutter doctor
+            - pipe: idreesvend/sonarscanner-flutter
+              variables:
+                SONAR_HOST_URL: ${SONAR_HOST_URL} # Get the value from the repository/workspace variable.
+                SONAR_TOKEN: ${SONAR_TOKEN} # Get the value from the repository/workspace variable. You shouldn't set secret in clear text here.
   
 definitions:
   caches:
     sonar: ~/.sonar
-    flutter: /opt/sonarqube/flutter/bin
