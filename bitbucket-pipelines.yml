@@ -9,7 +9,7 @@ pipelines:
       - step:
           name: SonarQube analysis
           script:
-              - flutter doctor
+              - flutter test --machine --coverage
               - sonar-scanner -Dsonar.projectKey=test -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
                   
 definitions:
