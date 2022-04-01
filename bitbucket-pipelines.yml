@@ -10,7 +10,7 @@ pipelines:
           name: SonarQube  PR analysis
           script:
               - flutter test --machine --coverage
-              - sonar-scanner -Dsonar.projectKey="$BITBUCKET_REPO_SLUG$BITBUCKET_PR_DESTINATION_BRANCH" -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
+              - sonar-scanner -Dsonar.projectKey="$BITBUCKET_REPO_SLUG$BITBUCKET_PR_SOURCE_BRANCH" -Dsonar.projectKey="$BITBUCKET_REPO_SLUG$BITBUCKET_PR_SOURCE_BRANCH" -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
               
   branches:
     '{master}': # or the name of your main branch
