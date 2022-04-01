@@ -7,7 +7,7 @@ pipelines:
   pull-requests:
     '**': #this runs as default for any branch not elsewhere defined
       - step:
-          name: SonarQube analysis
+          name: SonarQube ${BITBUCKET_REPO_FULL_NAME}${BITBUCKET_PR_SOURCE_BRANCH} PR analysis
           script:
               - flutter test --machine --coverage
               - sonar-scanner -Dsonar.projectKey=${BITBUCKET_REPO_FULL_NAME}${BITBUCKET_PR_SOURCE_BRANCH} -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
