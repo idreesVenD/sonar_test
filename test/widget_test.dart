@@ -27,4 +27,14 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
+  
+  test('fail test', () {
+    expect(1 == 2, true);
+  });
+
+  test('pass test', () {
+    expect(1 == 2, false);
+  });
+
+
 }
