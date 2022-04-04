@@ -9,7 +9,7 @@ pipelines:
       - step:
           name: SonarQube  PR analysis
           script:
-              - flutter test --machine --coverage
+              - flutter test --machine --coverage || true
               - sonar-scanner -Dsonar.projectName="$BITBUCKET_REPO_SLUG-$BITBUCKET_PR_ID" -Dsonar.projectKey="$BITBUCKET_REPO_SLUG-$BITBUCKET_PR_ID" -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
               
   branches:
@@ -17,7 +17,7 @@ pipelines:
       - step:
           name: SonarQube analysis
           script:
-              - flutter test --machine --coverage
+              - flutter test --machine --coverage || true
               - sonar-scanner -Dsonar.projectKey=test -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
                   
 definitions:
