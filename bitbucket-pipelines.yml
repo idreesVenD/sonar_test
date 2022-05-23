@@ -4,21 +4,28 @@ clone:
   depth: full
 
 pipelines:
-  pull-requests:
-    '**': #this runs as default for any branch not elsewhere defined
-      - step:
-          name: SonarQube  PR analysis
-          script:
-              - flutter test --machine --coverage > tests.output|| true
-              - sonar-scanner -Dsonar.projectName="$BITBUCKET_REPO_SLUG-$BITBUCKET_PR_ID" -Dsonar.projectKey="$BITBUCKET_REPO_SLUG-$BITBUCKET_PR_ID" -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
+  # pull-requests:
+  #   '**': #this runs as default for any branch not elsewhere defined
+  #     - step:
+  #         name: SonarQube  PR analysis
+  #         script:
+  #             - flutter test --machine --coverage > tests.output|| true
+  #             - sonar-scanner -Dsonar.projectName="$BITBUCKET_REPO_SLUG-$BITBUCKET_PR_ID" -Dsonar.projectKey="$BITBUCKET_REPO_SLUG-$BITBUCKET_PR_ID" -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
               
+  # branches:
+  #   '{master}': # or the name of your main branch
+  #     - step:
+  #         name: SonarQube analysis
+  #         script:
+  #             - flutter test --machine --coverage || true
+  #             - sonar-scanner -Dsonar.projectKey=test -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
   branches:
     '{master}': # or the name of your main branch
       - step:
           name: SonarQube analysis
           script:
               - flutter test --machine --coverage || true
-              - sonar-scanner -Dsonar.projectKey=test -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}
+              - sonar-scanner -Dsonar.projectKey=test -Dsonar.sources=lib -Dsonar.host.url=http://34.206.37.6:9060 -Dsonar.login=4438d0a9ebffaeb5ef9a899ecbe3ffb9e3c7b8e0
                   
 definitions:
   caches:
