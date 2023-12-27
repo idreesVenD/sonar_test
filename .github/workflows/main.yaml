@@ -1,0 +1,33 @@
+name: Flutter SonarQube Analysis
+
+on:
+  push:
+    branches: 
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      sonarqube:
+        image: idreesvend/sonarscanner-flutter:latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'stable'
+
+    - name: Run Flutter Doctor
+      run: flutter doctor
+
+    - name: Run Flutter Tests
+      run: flutter test --machine --coverage || true
+
+    - name: Run SonarQube Analysis
+      run: sonar-scanner
