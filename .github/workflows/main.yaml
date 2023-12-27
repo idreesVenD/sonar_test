@@ -14,14 +14,14 @@ jobs:
         image: idreesvend/sonarscanner-flutter:latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0 
+    # - uses: actions/checkout@v2
+    #   with:
+    #     fetch-depth: 0 
 
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: 'stable'
+    # - name: Set up Flutter
+    #   uses: subosito/flutter-action@v2
+    #   with:
+    #     flutter-version: 'stable'
 
     - name: Run Flutter Doctor
       run: flutter doctor
